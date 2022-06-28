@@ -8,7 +8,7 @@ pipeline{
         // stage 1. Build
         stage ('Build'){
             steps {
-                echo 'hola helpact'
+                sh './vendor/bin/phpunit tests'
             }
         }
 
