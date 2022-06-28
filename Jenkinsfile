@@ -1,6 +1,7 @@
 pipeline{
     //Directives
-
+    agent any
+   
     stages {
         // Specify various stage with in stages
 
