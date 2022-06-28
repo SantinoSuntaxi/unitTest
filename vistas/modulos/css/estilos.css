@@ -1,0 +1,100 @@
+
+/*.container1 {*/
+
+/*    max-width:250px;*/
+/*    align-content: flex-start;*/
+/*    margin-right: 100px auto;}*/
+
+
+/*.container2 {*/
+
+/*    max-width:300px;*/
+/*    align-content: flex-start;*/
+/*    margin-right: 100px auto;}*/
+
+/*.container3 {*/
+
+/*    max-width:300px;*/
+/*    align-content: flex-start;*/
+/*    margin-right: 100px auto;}*/
+
+/*.container4 {*/
+
+/*    max-width:300px;*/
+/*    align-content: flex-start;*/
+/*    margin-right: 100px auto;}*/
+
+
+
+/*.contenedor-tabla{*/
+
+/*    display: table;*/
+
+/*}*/
+
+/*.contenedor-fila{*/
+
+/*    display: table-row;*/
+
+/*}*/
+
+/*.contenedor-columna{*/
+
+/*    display: table-cell;*/
+
+/*}*/
+
+/*body*/
+/*{*/
+/*    margin:5;*/
+/*    padding:0;*/
+/*    background-color:#f1f1f1;*/
+
+/*}*/
+/*.box*/
+/*{*/
+/*    width:1300px;*/
+/*    padding:5px;*/
+/*    background-color:#fff;*/
+/*    border:1px solid #ccc;*/
+/*    border-radius:5px;*/
+/*    margin-top:25px;*/
+/*    font-size: 15px;*/
+/*}*/
+
+
+.table-hover thead tr:hover th, .table-hover tbody tr:hover td {
+    background-color: #D1D119;
+
+}
+
+
+th { font-size: 13px; }
+td { font-size: 13px; }
+
+
+.modal fade {
+    max-height: 1000px;
+}
+
+/*Quitar la marca x del Modal */
+.modal-header .close {
+    display:none;
+}
+
+.dataTables_filter {
+    float: left !important;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+    float: left;
+    text-align: left;
+    padding-top: 0.25em;
+}
+
+#responsable {
+    resize: none;
+}
+#responsable2 {
+    resize: none;
+}
