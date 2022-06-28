@@ -31,7 +31,7 @@ class OperationsTest extends TestCase
 
     public function testDivideWithTwoValues()
     {
-        $this->assertEquals(2, $this->op->divide(5, 5));
+        $this->assertEquals(1, $this->op->divide(5, 5));
     }
 
     public function testDivideWithNullValues()
