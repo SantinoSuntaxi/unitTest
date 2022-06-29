@@ -62,6 +62,31 @@ pipeline{
             
             }
         }
+
+
+        // Stage 4 : Desplegar los cambios con Docker-Compose
+        stage ('Despliegue por medio de Docker'){
+            steps {
+                echo "Despliegue ...."
+                sshPublisher(publishers: 
+                [sshPublisherDesc(
+                    configName: 'Controlador_Ansible', 
+                    transfers: [
+                        sshTransfer(
+                                cleanRemote:false,
+                                execCommand: 'ansible-playbook /opt/playbooks/desplieguedockercompose.yaml -i /opt/playbooks/hosts',
+                                execTimeout: 120000
+                        )
+                    ], 
+                    usePromotionTimestamp: false, 
+                    useWorkspaceInPromotion: false, 
+                    verbose: false)
+                    ])
+            
+            }
+        }
+
+
             
     }
 
