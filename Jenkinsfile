@@ -65,7 +65,7 @@ pipeline{
 
 
         // Stage 4 : Desplegar los cambios con Docker-Compose
-        stage ('Despliegue por medio de Docker'){
+        stage ('Despliegue por medio de Docker-Compose'){
             steps {
                 echo "Despliegue ...."
                 sshPublisher(publishers: 
