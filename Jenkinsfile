@@ -19,8 +19,29 @@ pipeline{
             }
         }
 
-        
-        // Stage 3 : Desplegar los cambios en el Contenedor Docker
+        // Stage 3 : Validar conexión con servidor de base de datos y Web
+        stage ('Despliegue por medio de Docker'){
+            steps {
+                echo "Validar conexión DB y Web server ...."
+                sshPublisher(publishers: 
+                [sshPublisherDesc(
+                    configName: 'Controlador_Ansible', 
+                    transfers: [
+                        sshTransfer(
+                                cleanRemote:false,
+                                execCommand: 'ansible-playbook /opt/playbooks/validarConexionServers.yaml -i /opt/playbooks/hosts',
+                                execTimeout: 120000
+                        )
+                    ], 
+                    usePromotionTimestamp: false, 
+                    useWorkspaceInPromotion: false, 
+                    verbose: false)
+                    ])
+            
+            }
+        }
+
+        // Stage 4 : Desplegar los cambios en el Contenedor Docker
         stage ('Despliegue por medio de Docker'){
             steps {
                 echo "Despliegue ...."
