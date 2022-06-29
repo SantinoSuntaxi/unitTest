@@ -20,7 +20,7 @@ pipeline{
         }
 
         // Stage 3 : Validar conexión con servidor de base de datos y Web
-        stage ('Despliegue por medio de Docker'){
+        stage ('Validar Conexiones con los nodos'){
             steps {
                 echo "Validar conexión DB y Web server ...."
                 sshPublisher(publishers: 
