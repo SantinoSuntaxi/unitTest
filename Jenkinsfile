@@ -1,39 +1,47 @@
 pipeline{
-    //Directives
+    //Directivas
     agent any
    
     stages {
-        // Specify various stage with in stages
+        // Definir las etapas del pipeline
 
-        // stage 1. Build
+        // stage 1. Validar la version de PHP UNIT y si esta instalado 
         stage ('Validar version phpUnit'){
             steps {
                 sh 'phpunit --version'
             }
         }
 
-        // Stage2 : Testing
+        // Stage2 : realizar el test en base al archivo xml
         stage ('Realizar Tests'){
             steps {
                 sh './vendor/bin/phpunit tests'
             }
         }
 
-
-        // Stage2 : Testing
-        stage ('Test'){
+        
+        // Stage 3 : Desplegar los cambios en el Contenedor Docker
+        stage ('Deploy to Docker'){
             steps {
-                echo ' testing......'
-
+                echo "Deploying ...."
+                sshPublisher(publishers: 
+                [sshPublisherDesc(
+                    configName: 'Controlador_Ansible', 
+                    transfers: [
+                        sshTransfer(
+                                cleanRemote:false,
+                                execCommand: 'ansible-playbook /opt/playbooks/descargarDesplegarDocker.yaml -i /opt/playbooks/hosts',
+                                execTimeout: 120000
+                        )
+                    ], 
+                    usePromotionTimestamp: false, 
+                    useWorkspaceInPromotion: false, 
+                    verbose: false)
+                    ])
+            
             }
         }
-
-
-        
-        
-        
-        
-        
+            
     }
 
 }
