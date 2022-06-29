@@ -21,7 +21,7 @@ pipeline{
 
         
         // Stage 3 : Desplegar los cambios en el Contenedor Docker
-        stage ('Deploy to Docker'){
+        stage ('Desplegar por medio de Docker'){
             steps {
                 echo "Deploying ...."
                 sshPublisher(publishers: 
