@@ -6,14 +6,14 @@ pipeline{
         // Definir las etapas del pipeline
 
         // stage 1. Validar la version de PHP UNIT y si esta instalado 
-        stage ('Validar version phpUnit'){
+        stage ('Validar versión PhpUnit'){
             steps {
                 sh 'phpunit --version'
             }
         }
 
         // Stage2 : realizar el test en base al archivo xml
-        stage ('Realizar Tests'){
+        stage ('Ejecutar Tests'){
             steps {
                 sh './vendor/bin/phpunit tests'
             }
@@ -21,9 +21,9 @@ pipeline{
 
         
         // Stage 3 : Desplegar los cambios en el Contenedor Docker
-        stage ('Desplegar por medio de Docker'){
+        stage ('Despliegue por medio de Docker'){
             steps {
-                echo "Deploying ...."
+                echo "Despliegue ...."
                 sshPublisher(publishers: 
                 [sshPublisherDesc(
                     configName: 'Controlador_Ansible', 
