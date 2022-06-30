@@ -14,7 +14,7 @@ class OperationsTest extends TestCase
 
     public function testAddWithTwoValues()
     {
-        $this->assertEquals(4, $this->op->add(2, 5));
+        $this->assertEquals(7, $this->op->add(2, 5));
     }
 
     public function testAddWithNullValues()
