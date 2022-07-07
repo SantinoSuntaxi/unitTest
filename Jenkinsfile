@@ -99,7 +99,7 @@ pipeline{
                         sshTransfer(
                                 cleanRemote:false,
                                 execCommand: 'ansible-playbook /opt/playbooks/composeonly.yaml -i /opt/playbooks/hosts',
-                                execTimeout: 120000
+                                execTimeout: 12000000
                         )
                     ], 
                     usePromotionTimestamp: false, 
