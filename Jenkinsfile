@@ -19,7 +19,7 @@ pipeline{
             }
         }
 
-        // Stage 3 : Validar conexión con servidor de base de datos y Web
+        // Stage 3 : Validar conexión con los servidores
         stage ('Validar Conexiones con los nodos'){
             steps {
                 echo "Validar conexión DB y Web server ...."
