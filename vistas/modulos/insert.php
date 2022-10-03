@@ -56,7 +56,7 @@ if(isset($_POST["operation"]))
 
 
 			header('Content-Type: text/html; charset=UTF-8');
-			$conexion=mysql_connect("localhost","root","") or
+			$conexion=mysql_connect("db","root","test") or
 			die("Problemas en la conexion");
 			mysql_select_db("crudemo",$conexion) or
 			die("Problemas en la selección de la base de datos");
@@ -88,7 +88,7 @@ if(isset($_POST["operation"]))
 
 
 			header('Content-Type: text/html; charset=UTF-8');
-			$conexion=mysql_connect("localhost","root","") or
+			$conexion=mysql_connect("db","root","test") or
 			die("Problemas en la conexion");
 			mysql_select_db("crudemo",$conexion) or
 			die("Problemas en la selección de la base de datos");
