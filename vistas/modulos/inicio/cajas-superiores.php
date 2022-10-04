@@ -27,7 +27,7 @@ $totalProductos = count($productos);
       
       <h3><?php echo number_format($ventas["total"],0); ?></h3>
 
-      <p>Lecciones</p>
+      <p>LeccionesTFM</p>
     
     </div>
     
