@@ -6,23 +6,23 @@ pipeline{
         // Definir las etapas del pipeline
 
         // stage 1. Validar la version de PHP UNIT y si esta instalado 
-        stage ('Validar versión PhpUnit'){
+        stage ('Validar la versión PhpUnit'){
             steps {
                 sh 'phpunit --version'
             }
         }
 
-        // Stage2 : realizar el test en base al archivo xml
-        stage ('Ejecutar Tests'){
+        // Stage2 : Realizar el test en base al archivo xml
+        stage ('Ejecutar Tests unitarios'){
             steps {
                 sh './vendor/bin/phpunit tests'
             }
         }
 
         // Stage 3 : Validar conexión con los servidores
-        stage ('Validar Conexiones con los nodos'){
+        stage ('Validar Conexion con el nodo'){
             steps {
-                echo "Validar conexión DB y Web server ...."
+                echo "Validar la conexión con el nodo...."
                 sshPublisher(publishers: 
                 [sshPublisherDesc(
                     configName: 'Controlador_Ansible', 
@@ -42,32 +42,32 @@ pipeline{
         }
 
         // Stage 4 : Desplegar los cambios en el Contenedor Docker
-        stage ('Despliegue por medio de Docker'){
-            steps {
-                echo "Despliegue ...."
-                sshPublisher(publishers: 
-                [sshPublisherDesc(
-                    configName: 'Controlador_Ansible', 
-                    transfers: [
-                        sshTransfer(
-                                cleanRemote:false,
-                                execCommand: 'ansible-playbook /opt/playbooks/descargarDesplegarDocker.yaml -i /opt/playbooks/hosts',
-                                execTimeout: 120000
-                        )
-                    ], 
-                    usePromotionTimestamp: false, 
-                    useWorkspaceInPromotion: false, 
-                    verbose: false)
-                    ])
+        // stage ('Despliegue por medio de Docker'){
+        //     steps {
+        //         echo "Despliegue ...."
+        //         sshPublisher(publishers: 
+        //         [sshPublisherDesc(
+        //             configName: 'Controlador_Ansible', 
+        //             transfers: [
+        //                 sshTransfer(
+        //                         cleanRemote:false,
+        //                         execCommand: 'ansible-playbook /opt/playbooks/descargarDesplegarDocker.yaml -i /opt/playbooks/hosts',
+        //                         execTimeout: 120000
+        //                 )
+        //             ], 
+        //             usePromotionTimestamp: false, 
+        //             useWorkspaceInPromotion: false, 
+        //             verbose: false)
+        //             ])
             
-            }
-        }
+        //     }
+        // }
 
 
-        // Stage 4 : Desplegar los cambios con Docker-Compose
-        stage ('Despliegue por medio de Docker-Compose'){
+        // Stage 4 : Borrar y Descargar de los repositorios desde Github
+        stage ('Borrar y descargar los repositorios de la aplicacion y docker-compose...'){
             steps {
-                echo "Despliegue ...."
+                echo "Borrar y descargar los repositorios de la aplicacion y docker-compose..."
                 sshPublisher(publishers: 
                 [sshPublisherDesc(
                     configName: 'Controlador_Ansible', 
@@ -88,10 +88,10 @@ pipeline{
 
 
 
-        // Stage 4 : Desplegar los cambios con Docker-Compose
-        stage ('Despliegue por medio de Docker-Compose2'){
+        // Stage 5 : Desplegar la aplicacion por medio de Docker-Compose
+        stage ('Entrega continua por medio de Docker-Compose'){
             steps {
-                echo "Despliegue ...."
+                echo "Entrega de la aplicacion ...."
                 sshPublisher(publishers: 
                 [sshPublisherDesc(
                     configName: 'Controlador_Ansible', 
