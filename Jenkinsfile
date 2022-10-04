@@ -41,29 +41,6 @@ pipeline{
             }
         }
 
-        // Stage 4 : Desplegar los cambios en el Contenedor Docker
-        // stage ('Despliegue por medio de Docker'){
-        //     steps {
-        //         echo "Despliegue ...."
-        //         sshPublisher(publishers: 
-        //         [sshPublisherDesc(
-        //             configName: 'Controlador_Ansible', 
-        //             transfers: [
-        //                 sshTransfer(
-        //                         cleanRemote:false,
-        //                         execCommand: 'ansible-playbook /opt/playbooks/descargarDesplegarDocker.yaml -i /opt/playbooks/hosts',
-        //                         execTimeout: 120000
-        //                 )
-        //             ], 
-        //             usePromotionTimestamp: false, 
-        //             useWorkspaceInPromotion: false, 
-        //             verbose: false)
-        //             ])
-            
-        //     }
-        // }
-
-
         // Stage 4 : Borrar y Descargar de los repositorios desde Github
         stage ('Borrar y descargar los repositorios de la aplicacion y docker-compose...'){
             steps {
