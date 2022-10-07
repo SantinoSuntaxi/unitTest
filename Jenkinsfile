@@ -6,21 +6,21 @@ pipeline{
         // Definir las etapas del pipeline
 
         // stage 1. Validar la version de PHP UNIT y si esta instalado 
-        stage ('Validar la versión PhpUnit'){
+        stage ('Validar versión PhpUnit'){
             steps {
                 sh 'phpunit --version'
             }
         }
 
         // Stage2 : Realizar el test en base al archivo xml
-        stage ('Ejecutar Tests unitarios'){
+        stage ('Ejecutar Tests'){
             steps {
                 sh './vendor/bin/phpunit tests'
             }
         }
 
         // Stage 3 : Validar conexión con los servidores
-        stage ('Validar Conexion con el nodo'){
+        stage ('Validar Conexiones con los nodos'){
             steps {
                 echo "Validar la conexión con el nodo...."
                 sshPublisher(publishers: 
@@ -42,9 +42,9 @@ pipeline{
         }
 
         // Stage 4 : Borrar y Descargar de los repositorios desde Github
-        stage ('Borrar y descargar los repositorios de la aplicacion y docker-compose...'){
+        stage ('Descargar los files de docker (repositorios)...'){
             steps {
-                echo "Borrar y descargar los repositorios de la aplicacion y docker-compose..."
+                echo "Descargar los files de docker (repositorios)......"
                 sshPublisher(publishers: 
                 [sshPublisherDesc(
                     configName: 'Controlador_Ansible', 
