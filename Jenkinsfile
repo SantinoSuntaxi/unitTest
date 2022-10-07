@@ -66,9 +66,9 @@ pipeline{
 
 
         // Stage 5 : Desplegar la aplicacion por medio de Docker-Compose
-        stage ('Entrega continua por medio de Docker-Compose'){
+        stage ('Despliegue por medio de Docker-Compose'){
             steps {
-                echo "Entrega de la aplicacion ...."
+                echo "despliegue de la aplicacion ...."
                 sshPublisher(publishers: 
                 [sshPublisherDesc(
                     configName: 'Controlador_Ansible', 
